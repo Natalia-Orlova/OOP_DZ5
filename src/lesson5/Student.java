@@ -1,4 +1,4 @@
-package lesson5.Core.Models;
+package lesson5;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -12,6 +12,18 @@ public class Student implements Comparable<Student> {
         this.name = name;
         this.surname = surname;
         this.attendance = attendance;
+    }
+
+    public int getAttendancePercent () {
+        int average;
+        int visitedLessons = 0;
+        for (boolean v : attendance.values()) {
+            if (v == true) {
+                visitedLessons++;
+            }
+        }
+        average = visitedLessons * 100 / attendance.size();
+        return average;
     }
 
     public String getName() {
@@ -45,8 +57,9 @@ public class Student implements Comparable<Student> {
                 "]\n";
     }
 
+
     @Override
     public int compareTo(Student o) {
-        return 0;
+        return this.name.compareTo(o.name);
     }
 }
