@@ -1,6 +1,9 @@
 package lesson5;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Attendance {
     private List<Student> attendanceList;
@@ -16,14 +19,4 @@ public class Attendance {
         }
         return copyStudent;
     }
-
-    public void sortAttendanceList (List<Student> attendanceList) {
-        int minAttend = attendanceList.get(0).getAttendancePercent();
-    }
-
-    public Student getStudent(List<Student> attendanceList, int index) {
-        return attendanceList.get(index);
-    }
-
-
 }

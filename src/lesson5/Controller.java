@@ -1,7 +1,5 @@
 package lesson5;
 
-import com.sun.jdi.connect.AttachingConnector;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,9 +30,9 @@ public class Controller {
 
 
         List<Student> log = Arrays.asList(
-                new Student ("Ivan", "Ivanov", attendance1),
-                new Student ("Pavel", "Stepanov", attendance2),
-                new Student ("Petr", "Pavlov", attendance3)
+                new Student("Ivan", "Ivanov", attendance1),
+                new Student("Pavel", "Stepanov", attendance2),
+                new Student("Petr", "Pavlov", attendance3)
         );
 
         Attendance attendance = new Attendance(log);
@@ -42,9 +40,11 @@ public class Controller {
         try (Scanner in = new Scanner(System.in)) {
 
             while (true) {
-                System.out.println(" 1 - Список всех студентов и посещаемость в процентах");
-                System.out.println(" 2 - Список студентов с посещаемостью 25% и ниже");
-                System.out.println(" 3 - Список всех студентов, отсортированный по посещаемости");
+                System.out.println("Выберите вид отчета: \n");
+                System.out.println("1 - Список всех студентов и посещаемость в процентах");
+                System.out.println("2 - Список студентов с посещаемостью 25% и ниже");
+                System.out.println("3 - Список всех студентов, отсортированный по посещаемости");
+                System.out.println("0 - Выход \n");
                 String key = in.next();
                 System.out.print("\033[H\033[J");
                 switch (key) {
@@ -54,7 +54,11 @@ public class Controller {
                     case "2":
                         view.printLess25(attendance);
                         break;
-
+                    case "3":
+                        view.printSortedList(log);
+                        break;
+                    case "0":
+                        System.exit(0);
                     default:
                         System.out.println("Такой команды нет");
                         break;
